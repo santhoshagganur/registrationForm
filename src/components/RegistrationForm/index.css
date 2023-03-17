@@ -1,0 +1,59 @@
+/* Write your CSS code here */
+.bg-container {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main-heading {
+  font-family: Roboto;
+  color: #ea580c;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.registration-card {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  padding: 20px;
+  width: 300px;
+}
+
+.first-name {
+  font-family: Roboto;
+  font-size: 15px;
+  color: #475569;
+  margin-bottom: 10px;
+}
+
+.last-name {
+  font-family: Roboto;
+  font-size: 15px;
+  color: #475569;
+  margin-bottom: 10px;
+}
+
+.input-element {
+  height: 40px;
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  background-color: #ff0b37;
+  border-radius: 5px;
+  padding: 10px;
+  color: #ffffff;
+  font-size: 12px;
+  border-width: 0;
+}
