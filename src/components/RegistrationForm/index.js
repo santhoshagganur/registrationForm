@@ -6,8 +6,9 @@ class RegistrationForm extends Component {
   state = {
     firstname: '',
     lastname: '',
-    showLastnameError: false,
-    showFirstnameError: false,
+    showLastnameError: true,
+    showFirstnameError: true,
+    errorMsg: '',
   }
 
   changeFirstname = event => {
@@ -18,29 +19,24 @@ class RegistrationForm extends Component {
     this.setState({lastname: event.target.value})
   }
 
-  onBlurFirstname = () => {
-    const {firstname} = this.state
-    const result = firstname === ''
-    if (result) {
-      this.setState({showFirstnameError: true})
-    }
+  onFailure = () => {
+    this.setState({errorMsg: 'Required'})
   }
 
-  onBlurLastname = () => {
-    const {lastname} = this.state
-    const result = lastname === ''
-    if (result) {
-      this.setState({showLastnameError: true})
-    }
+  submitUserDetails = event => {
+    event.preventDefault()
+    const {firstname, lastname} = this.state
+    console.log(firstname)
+    console.log(lastname)
   }
 
   render() {
-    const {showFirstnameError, showLastnameError} = this.state
+    const {showFirstnameError, showLastnameError, errorMsg} = this.state
 
     return (
       <div className="bg-container">
         <h1 className="main-heading">Registration</h1>
-        <div className="registration-card">
+        <form className="registration-card" onSubmit={this.submitUserDetails}>
           <label htmlFor="firstname" className="first-name">
             FIRST NAME
           </label>
@@ -49,10 +45,9 @@ class RegistrationForm extends Component {
             type="text"
             placeholder="First name"
             className="input-element"
-            onChange={this.changeFirstname()}
-            onBlur={this.onBlurFirstname()}
+            onChange={this.changeFirstname}
           />
-          {showFirstnameError ? <p> Error </p> : ''}
+          {showFirstnameError && <p> {errorMsg} </p>}
           <label htmlFor="lastname" className="last-name">
             LAST NAME
           </label>
@@ -61,16 +56,15 @@ class RegistrationForm extends Component {
             type="text"
             placeholder="Last name"
             className="input-element"
-            onChange={this.changeLastname()}
-            onBlur={this.onBlurLastname()}
+            onChange={this.changeLastname}
           />
-          {showLastnameError ? <p> Error </p> : ''}
+          {showLastnameError && <p> {errorMsg} </p>}
           <div className="submit-button-container">
             <button type="button" className="submit-button">
               Submit
             </button>
           </div>
-        </div>
+        </form>
       </div>
     )
   }
